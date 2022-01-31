@@ -19,7 +19,7 @@ export class UsuarioService {
 
   constructor(
     private http: HttpClient,
-     /* private datePipe: DatePipe */
+
      ) { }
 
   usuariosUrl = 'http://localhost:8080/users';

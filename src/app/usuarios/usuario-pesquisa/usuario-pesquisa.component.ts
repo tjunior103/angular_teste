@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { UsuarioFiltro, UsuarioService } from '../usuario.service';
 
 import { Table } from 'primeng/table';
