@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="p-grid">
+        <div class="p-col-12">
+            <h1>Usuários</h1>
+        </div>
+    </div>
+
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+        <div class="p-grid">
+            <div class="p-col-12 labelEspacamento p-fluid">
+                <label>Nome </label>
+                <input type="text" pInputText class="p-inputtext-sm" name="name" [(ngModel)]="filtro.nome" pTooltip="Entre com o nome do usuário e/ou" tooltipPosition="top" />
+            </div>
+            <div class="p-col-12 labelEspacamento p-fluid">
+                <label>Usuário </label>
+                <input type="text" pInputText class="p-inputtext-sm" name="username" [(ngModel)]="filtro.login" pTooltip="Entre com o login do usuário e/ou" tooltipPosition="top" />
+            </div>
+            <div class="p-col-12 labelEspacamento p-fluid">
+                <label>E-mail </label>
+                <input type="text" pInputText class="p-inputtext-sm" name="email" [(ngModel)]="filtro.email" pTooltip="Entre com o e-mail do usuário e/ou" tooltipPosition="top" />
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-12">
+                <button pButton type="submit" label="Pesquisar"></button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <!-- tabela -->
+    <div class="p-grid">
+
+        <div class="p-col-12">
+            <div class="p-col-12">
+                <p-table [value]="usuarios" styleClass="p-datatable-gridlines p-datatable-striped" [responsive]="true" emptyMessage="Nenhum valor encontrado!" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
+                    #tabela>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Login</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Cadastro</th>
+                            <th>Status</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-usuario>
+                        <tr>
+                            <td>
+                                {{ usuario.id }}
+                            </td>
+                            <td>
+                                {{ usuario.name + ' ' + usuario.surname }}
+                            </td>
+                            <td>
+                                {{ usuario.username }}
+                            </td>
+                            <td>
+                                {{ usuario.email }}
+                            </td>
+                            <td>
+                                {{ usuario.phone }}
+                            </td>
+                            <td>
+                                {{ usuario.register_date }}
+                            </td>
+                            <td>
+                                {{ usuario.is_enable ? 'Ativo' : 'Inativo'}}
+                            </td>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="5">
+                                Nenhuma usuário encontrado
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </div>
+    <!-- fim parte tabela -->
+
+</div>
